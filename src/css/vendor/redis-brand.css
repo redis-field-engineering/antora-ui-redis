@@ -531,6 +531,11 @@ body {
   -webkit-tap-highlight-color: transparent;
 }
 
+/* Dark theme nav link transitions */
+.dark-theme .nav-link {
+  transition: background-color 0.2s ease, color 0.2s ease !important;
+}
+
 /* Apply background color to html */
 html {
   background-color: var(--page-background-color);
@@ -539,17 +544,10 @@ html {
 /* Prevent flash of nav items and background */
 html.dark-theme,
 body.dark-theme,
-.dark-theme *,
-.dark-theme .nav-menu,
 .dark-theme .nav-container,
 .dark-theme .toolbar,
 .dark-theme .navbar,
-.dark-theme .doc,
-.dark-theme a,
-.dark-theme a:hover,
-.dark-theme a:visited,
-.dark-theme a:active,
-.dark-theme a:link {
+.dark-theme .doc {
   transition: none !important;
   animation: none !important;
 }
@@ -559,8 +557,8 @@ body.dark-theme,
   background-color: var(--redis-dark-theme-bg) !important;
 }
 
-/* Force nav background - but keep specific elements visible */
-.dark-theme .nav-menu * {
+/* Force nav background - but allow hover states */
+.dark-theme .nav-menu {
   background-color: var(--redis-dark-theme-sidebar) !important;
 }
 
@@ -570,10 +568,10 @@ body.dark-theme,
   color: white !important;
 }
 
-/* Make sure nav text is visible in dark mode, even in selected sections */
+/* Make sure nav text is visible in dark mode - but allow overrides for hover/current states */
 .dark-theme .nav-item .nav-text,
 .dark-theme .nav-item .nav-link {
-  color: var(--redis-dark-theme-text) !important;
+  color: var(--redis-dark-theme-text);
 }
 
 /* Javadoc integration styling */

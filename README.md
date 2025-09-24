@@ -74,6 +74,97 @@ gulp bundle:pack
 
 The UI bundle will again be available at `build/ui-bundle.zip`.
 
+## Configuration Options
+
+The Redis UI bundle supports configuration through `site.keys` in your `antora-playbook.yml`:
+
+### GitHub Project Link
+```yaml
+site:
+  keys:
+    github: https://github.com/your-org/your-project
+```
+
+### Edit Page Functionality
+
+**To disable "Edit this Page" links (default behavior):**
+```yaml
+site:
+  keys:
+    github: https://github.com/your-org/your-project
+    # No enable-edit key = edit functionality disabled
+```
+
+**To enable "Edit this Page" links:**
+```yaml
+site:
+  keys:
+    github: https://github.com/your-org/your-project
+    enable-edit: true
+```
+
+When `enable-edit: true` is set, the UI will show edit links based on:
+- `page.editUrl` (GitHub edit links) if available
+- `page.fileUri` (local file links) for development
+
+### Complete Configuration Example
+
+```yaml
+site:
+  title: Your Redis Project Documentation
+  url: https://your-org.github.io/your-project
+  keys:
+    github: https://github.com/your-org/your-project
+    enable-edit: true  # Enable edit functionality
+
+content:
+  sources:
+    - url: .
+      branches: [HEAD, main]
+      start_path: docs
+      # edit_url is auto-generated for GitHub projects
+      # or set to false to disable: edit_url: false
+
+ui:
+  bundle:
+    url: path/to/antora-ui-redis/build/ui-bundle.zip
+    snapshot: true
+```
+
+## Project Examples
+
+### Redis Spark Connector (Edit Disabled)
+```yaml
+site:
+  title: Redis Connector for Spark Documentation
+  keys:
+    github: https://github.com/redis-field-engineering/redis-spark-dist
+    # No enable-edit = edit links disabled
+
+content:
+  sources:
+    - url: .
+      branches: [HEAD, main]
+      start_path: docs
+      edit_url: false  # Explicitly disable GitHub edit URLs
+```
+
+### Redis OM Spring (Edit Enabled)
+```yaml
+site:
+  title: Redis OM Spring Documentation
+  keys:
+    github: https://github.com/redis/redis-om-spring
+    enable-edit: true  # Enable edit functionality
+
+content:
+  sources:
+    - url: .
+      branches: [HEAD, main]
+      start_path: docs
+      # edit_url auto-generated for GitHub edits
+```
+
 ## Extensions to the UI
 
 ### Theme Toggle
@@ -93,6 +184,15 @@ This UI bundle includes:
 * Redis brand colors and dark theme
 * Redis logos and favicons
 * Optimized navigation and layout for Redis documentation
+
+### Edit Page Configuration
+
+The UI bundle supports configurable "Edit this Page" functionality:
+
+* **Default**: Edit links are disabled for security and consistency
+* **Opt-in**: Projects can enable edit links via `site.keys.enable-edit: true`
+* **Flexible**: Supports both GitHub edit URLs and local file paths
+* **Generic**: Works across all Redis projects with appropriate configuration
 
 ## Authors
 
