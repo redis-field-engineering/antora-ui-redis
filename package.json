@@ -1,11 +1,11 @@
 {
-  "name": "antora-ui-spring",
-  "description": "Produces the UI bundle for projects on docs.spring.io that are built with Antora",
-  "homepage": "https://docs.spring.io",
+  "name": "antora-ui-redis",
+  "description": "Produces the UI bundle for Redis projects built with Antora",
+  "homepage": "https://redis.io/docs",
   "license": "MPL-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/spring-io/antora-ui-spring"
+    "url": "https://github.com/redis/antora-ui-redis"
   },
   "scripts": {
     "start": "gulp preview",
@@ -21,7 +21,6 @@
     "@asciidoctor/core": "~2.2",
     "@asciidoctor/tabs": "1.0.0-beta.6",
     "@docsearch/js": "3",
-    "@springio/asciidoctor-extensions": "1.0.0-alpha.8",
     "algoliasearch": "4",
     "autoprefixer": "~10.4",
     "browser-pack-flat": "~3.5",

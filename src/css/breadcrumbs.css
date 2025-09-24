@@ -52,3 +52,13 @@ a + .breadcrumbs {
 .breadcrumbs li:last-of-type::after {
   content: none;
 }
+
+.breadcrumbs a {
+  color: var(--doc-font-color);
+  text-decoration: none;
+}
+
+.breadcrumbs a:hover {
+  color: var(--doc-font-color);
+  text-decoration: none;
+}
